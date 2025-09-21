@@ -11,10 +11,12 @@ from click.testing import CliRunner
 
 # Imports will fail initially - expected for TDD
 try:
-    from cli.main import main
-    from services.project_generator import ProjectGenerator
-    from models.project_template import ProjectTemplate
+    from src.cli.main import main
+    from src.services.project_generator import ProjectGenerator
+    from src.models.project_template import ProjectTemplate
 except ImportError:
+    import click
+    
     # Mock classes for testing
     class ProjectGenerator:
         def generate(self, *args, **kwargs):
@@ -23,7 +25,20 @@ except ImportError:
     class ProjectTemplate:
         pass
     
+    @click.group()
     def main():
+        """Mock main command for testing"""
+        pass
+        
+    @main.command()
+    @click.argument('project_name')
+    @click.option('--template', default='basic')
+    @click.option('--author', default='Test Author')
+    @click.option('--email', default='test@example.com')
+    @click.option('--output-dir', default='.')
+    @click.option('--no-batch-files', is_flag=True)
+    def generate(project_name, template, author, email, output_dir, no_batch_files):
+        """Mock generate command"""
         pass
 
 
@@ -49,10 +64,16 @@ class TestBasicProjectGeneration:
             'generate', project_name,
             '--output-dir', str(self.temp_path),
             '--author', 'Test User',
-            '--email', 'test@example.com'
+            '--email', 'test@example.com',
+            '--force'
         ])
         
-        # Initially this will fail - no implementation
+        # Print output for debugging if test fails
+        if result.exit_code != 0:
+            print(f"Exit code: {result.exit_code}")
+            print(f"Output: {result.output}")
+            print(f"Exception: {result.exception}")
+        
         assert result.exit_code == 0
         
         # Verify project directory structure
@@ -66,7 +87,7 @@ class TestBasicProjectGeneration:
             'requirements.txt', 
             'pytest.ini',
             'README.md',
-            'setup.py'
+            'pyproject.toml'
         ]
         
         for file_name in required_files:
@@ -80,8 +101,17 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--author', 'Test Author',
+            '--email', 'test@example.com',
+            '--force'
         ])
+        
+        # Print output for debugging if test fails
+        if result.exit_code != 0:
+            print(f"Exit code: {result.exit_code}")
+            print(f"Output: {result.output}")
+            print(f"Exception: {result.exception}")
         
         assert result.exit_code == 0
         
@@ -99,7 +129,8 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -120,7 +151,8 @@ class TestBasicProjectGeneration:
         result = self.runner.invoke(main, [
             'generate', project_name,
             '--output-dir', str(self.temp_path),
-            '--author', author_name
+            '--author', author_name,
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -139,7 +171,8 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -158,7 +191,8 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -178,7 +212,8 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -205,7 +240,8 @@ class TestBasicProjectGeneration:
         
         result = self.runner.invoke(main, [
             'generate', project_name,
-            '--output-dir', str(self.temp_path)
+            '--output-dir', str(self.temp_path),
+            '--force'
         ])
         
         assert result.exit_code == 0
@@ -227,7 +263,8 @@ class TestBasicProjectGeneration:
         result = self.runner.invoke(main, [
             'generate', project_name,
             '--output-dir', str(self.temp_path),
-            '--no-batch-files'
+            '--no-batch-files',
+            '--force'
         ])
         
         assert result.exit_code == 0

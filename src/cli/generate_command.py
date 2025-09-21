@@ -45,6 +45,9 @@ from utils.validation import InputValidator
               type=int,
               default=90,
               help='Coverage fail-under threshold (default: 90)')
+@click.option('--include-batch-files/--no-batch-files',
+              default=True,
+              help='Include batch files for development workflow (default: yes)')
 @click.option('--force', '-f',
               is_flag=True,
               help='Overwrite existing directory')
@@ -66,6 +69,7 @@ def generate(name: Optional[str],
              include_tests: bool,
              include_linting: bool,
              coverage_threshold: int,
+             include_batch_files: bool,
              force: bool,
              dry_run: bool,
              verbose: bool):
@@ -132,7 +136,7 @@ def generate(name: Optional[str],
             author=author,
             email=email,
             python_version=python_version,
-            include_batch_files=True
+            include_batch_files=include_batch_files
         )
         
         # Create project metadata
