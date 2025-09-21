@@ -30,33 +30,33 @@
 
 ## Phase 3.1: Setup
 
-- [ ] T001 Create project structure with src/, tests/, templates/ directories
-- [ ] T002 Initialize Python project with Click, Jinja2, pytest dependencies in requirements.txt
-- [ ] T003 [P] Configure linting with ruff and formatting tools in pyproject.toml
-- [ ] T004 [P] Setup pytest configuration with markers in pytest.ini
+- [x] T001 Create project structure with src/, tests/, templates/ directories
+- [x] T002 Initialize Python project with Click, Jinja2, pytest dependencies in requirements.txt
+- [x] T003 [P] Configure linting with ruff and formatting tools in pyproject.toml
+- [x] T004 [P] Setup pytest configuration with markers in pytest.ini
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 
 ### CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation
 
-- [ ] T005 [P] Contract test for generate command CLI interface in tests/contract/test_generate_command.py
-- [ ] T006 [P] Integration test for basic project generation in tests/integration/test_basic_generation.py
-- [ ] T007 [P] Integration test for CLI project generation in tests/integration/test_cli_generation.py
-- [ ] T008 [P] Integration test for installation verification in tests/integration/test_installation.py
+- [x] T005 [P] Contract test for generate command CLI interface in tests/contract/test_generate_command.py
+- [x] T006 [P] Integration test for basic project generation in tests/integration/test_basic_generation.py
+- [x] T007 [P] Integration test for CLI project generation in tests/integration/test_cli_generation.py
+- [x] T008 [P] Integration test for installation verification in tests/integration/test_installation.py
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
 
-- [ ] T009 [P] ProjectTemplate model in src/models/project_template.py
-- [ ] T010 [P] TemplateFile model in src/models/template_file.py
-- [ ] T011 [P] ProjectMetadata model in src/models/project_metadata.py
-- [ ] T012 [P] ConfigurationProfile model in src/models/configuration_profile.py
-- [ ] T013 [P] TemplateLoader service in src/services/template_loader.py
-- [ ] T014 [P] ProjectGenerator service in src/services/project_generator.py
-- [ ] T015 [P] FileSystemService for file operations in src/services/filesystem_service.py
-- [ ] T016 CLI generate command in src/cli/generate_command.py
-- [ ] T017 Main CLI entry point in src/cli/main.py
-- [ ] T018 Input validation and error handling in src/utils/validation.py
-- [ ] T019 Template processing logic in src/utils/template_processor.py
+- [x] T009 [P] ProjectTemplate model in src/models/project_template.py
+- [x] T010 [P] TemplateFile model in src/models/template_file.py
+- [x] T011 [P] ProjectMetadata model in src/models/project_metadata.py
+- [x] T012 [P] ConfigurationProfile model in src/models/configuration_profile.py
+- [x] T013 [P] TemplateLoader service in src/services/template_loader.py
+- [x] T014 [P] ProjectGenerator service in src/services/project_generator.py
+- [x] T015 [P] FileSystemService for file operations in src/services/filesystem_service.py
+- [x] T016 CLI generate command in src/cli/generate_command.py
+- [x] T017 Main CLI entry point in src/cli/main.py
+- [x] T018 Input validation and error handling in src/utils/validation.py
+- [x] T019 Template processing logic in src/utils/template_processor.py
 
 ## Phase 3.4: Integration
 
