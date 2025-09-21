@@ -47,7 +47,11 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Object-Oriented Design**: All components follow OOP principles with proper encapsulation
+- [ ] **Test-Driven Development**: Tests planned before implementation, TDD workflow established
+- [ ] **Unit Testing Excellence**: Comprehensive unit testing strategy with mocking approach defined
+- [ ] **Console Application Standards**: CLI framework chosen, error handling and output formats planned
+- [ ] **Code Quality Gates**: Static analysis tools and CI/CD quality checks configured
 
 ## Project Structure
 
@@ -209,4 +213,4 @@ ios/ or android/
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `/memory/constitution.md`*

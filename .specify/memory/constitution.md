@@ -1,50 +1,46 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: none → 1.0.0
+- Added principles: I. Object-Oriented Design, II. Test-Driven Development, III. Unit Testing Excellence, IV. Console Application Standards, V. Code Quality Gates
+- Added sections: Quality Standards, Development Workflow  
+- Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md
+- No follow-up TODOs
+-->
+
+# Auto Py Proj Builder Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Object-Oriented Design (NON-NEGOTIABLE)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+Every component MUST be designed with proper object-oriented principles: encapsulation, inheritance, and polymorphism. Classes MUST have single responsibility, clear interfaces, and proper separation of concerns. No procedural code in business logic layers - all functionality MUST be encapsulated in well-designed classes with clear contracts.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Test-Driven Development (NON-NEGOTIABLE)
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+TDD MUST be strictly followed: Tests written first → Tests MUST fail → User approval → Then implement. Red-Green-Refactor cycle is mandatory for all business logic. No implementation code without failing tests. Test coverage MUST be validated before any code integration.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Unit Testing Excellence
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+All business logic MUST have comprehensive unit tests with minimum 90% code coverage. External dependencies MUST be mocked using unittest.mock or pytest-mock. Tests MUST be fast (<1s each), isolated, and deterministic. Integration tests are separate from unit tests.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Console Application Standards
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+All console applications MUST use proper CLI frameworks (argparse, click, or typer). Error handling MUST be graceful with user-friendly messages. Output MUST support both human-readable and JSON formats. Logging MUST be structured and configurable.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Code Quality Gates
+
+Static analysis MUST pass: type checking (mypy), linting (ruff or pylint), and formatting (black). All quality gates MUST be automated in CI/CD. Code complexity MUST be justified if exceeding standard thresholds. Dependencies MUST be pinned and security-scanned.
+
+## Quality Standards
+
+Python version MUST be 3.9+ with type hints mandatory for all public interfaces. Documentation MUST include docstrings for all public methods following Google or NumPy style. Performance requirements: CLI commands MUST respond within 2 seconds for typical use cases.
+
+## Development Workflow
+
+All code changes MUST go through pull request review. Branch naming MUST follow pattern: `feature/###-description` or `bugfix/###-description`. Commit messages MUST be descriptive and reference issue numbers. Pre-commit hooks MUST run all quality gates locally.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and guidelines. Amendments require documentation of impact, team approval, and migration plan for existing code. All pull requests MUST verify constitutional compliance. Complexity violations MUST be justified with technical debt tracking.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-09-21 | **Last Amended**: 2025-09-21
