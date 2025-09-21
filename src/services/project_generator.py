@@ -135,7 +135,7 @@ class ProjectGenerator:
         context.update({
             'pytest_markers': configuration_profile.pytest_markers,
             'quality_tools': configuration_profile.quality_tools,
-            'coverage_fail_under': configuration_profile.coverage_settings.get('fail_under', 90)
+            'coverage_fail_under': configuration_profile.coverage_settings.get('fail_under', 50)
         })
         
         # Add system information
