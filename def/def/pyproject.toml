@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "test_project"
+name = "def"
 version = "0.1.0"
-description = "Template for test_project"
+description = "Template for def"
 readme = "README.md"
-authors = [{name = "Test User", email = "test@example.com"}]
+authors = [{name = "Developer", email = "developer@example.com"}]
 license = {text = "MIT"}
 requires-python = ">=3.9"
 classifiers = [
@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 [project.scripts]
-test_project = "main:main"
+def = "main:main"
 
 [tool.ruff]
 target-version = "py39"

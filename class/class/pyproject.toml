@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "class"
+version = "0.1.0"
+description = "Template for class"
+readme = "README.md"
+authors = [{name = "Developer", email = "developer@example.com"}]
+license = {text = "MIT"}
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+]
+
+[project.scripts]
+class = "main:main"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'UP']
+ignore = ['E501', 'B008']
+
+[tool.black]
+target-version = ['py39']
+line-length = 100
+include = "\.pyi?$"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = True
+warn_unused_configs = True
+disallow_untyped_defs = True

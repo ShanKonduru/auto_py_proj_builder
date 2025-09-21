@@ -106,12 +106,22 @@ def generate(name: Optional[str],
         _validate_inputs(validator, project_name, author, email, python_version, 
                         coverage_threshold, dependencies)
         
-        # Set defaults from environment or prompts
+        # Set defaults from environment or prompts (only prompt in interactive mode)
         if not author:
-            author = click.prompt('Author name', default='Developer')
+            # Check if we're in an interactive terminal
+            import sys
+            if sys.stdin.isatty() and not dry_run:
+                author = click.prompt('Author name', default='Developer')
+            else:
+                author = 'Developer'  # Use default for non-interactive mode
         
         if not email:
-            email = click.prompt('Author email', default='developer@example.com')
+            # Check if we're in an interactive terminal  
+            import sys
+            if sys.stdin.isatty() and not dry_run:
+                email = click.prompt('Author email', default='developer@example.com')
+            else:
+                email = 'developer@example.com'  # Use default for non-interactive mode
         
         if not description:
             description = f'A {template_type} Python project'
@@ -124,9 +134,16 @@ def generate(name: Optional[str],
         
         # Check for existing directory
         if target_path.exists() and not force:
-            if not click.confirm(f'Directory {target_path} exists. Continue?'):
-                click.echo('Generation cancelled.')
-                return
+            # Only prompt in interactive mode
+            import sys
+            if sys.stdin.isatty() and not dry_run:
+                if not click.confirm(f'Directory {target_path} exists. Continue?'):
+                    click.echo('Generation cancelled.')
+                    return
+            else:
+                # In non-interactive mode, default to continuing (like --force)
+                if verbose:
+                    click.echo(f'Directory {target_path} exists, continuing...')
         
         # Create project template
         project_template = ProjectTemplate(

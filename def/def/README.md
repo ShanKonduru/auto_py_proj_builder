@@ -1,10 +1,10 @@
-# test_project
+# def
 
-Template for test_project
+Template for def
 
 ## Author
 
-Test User (test@example.com)
+Developer (developer@example.com)
 
 ## Installation
 

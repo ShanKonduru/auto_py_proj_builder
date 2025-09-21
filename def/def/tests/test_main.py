@@ -1,5 +1,5 @@
 """
-Tests for test_project.
+Tests for def.
 """
 import pytest
 
